@@ -1,0 +1,1387 @@
+/* ==========================================================================
+   Configuration des polices
+   ========================================================================== */
+@font-face {
+  font-family: "old_english_text_mtregular";
+  src: local("Old English Text MT"),
+    url("../fonts/oldenglishtextmt-webfont.woff2") format("woff2"),
+    url("../fonts/oldenglishtextmt-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "english_gothic_17th_c.regular";
+  src: local("English Gothic 17th C"),
+    url("../fonts/englishgothic17thc-da9e-webfont.woff2") format("woff2"),
+    url("../fonts/englishgothic17thc-da9e-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Variables fondamentales */
+:root {
+  /* Thème sombre par défaut */
+  --logo-path: url("/wp-content/themes/revelio/assets/images/logo-black.png");
+  --background-body: #121212;
+  --background-nav: #f5f5f5;
+  --background-block: #212121;
+  --background-block-light: #333333;
+  --border-main: #dcdcdc;
+  --border-block: #333333;
+  --color-main: #e6e6e6e6;
+  --color-negative-light: #333333;
+  --color-negative: #121212;
+  --color-link-body: #e6e6e6e6;
+  --color-link-negative: #121212;
+  --color-link-light: #f5f5f5;
+  --color-link-hover: #b5b5b5;
+
+  /* Typographie */
+  --font-body: "Lato", system-ui, -apple-system, sans-serif;
+  --font-name: "old_english_text_mtregular", serif;
+  --font-italic: "Lato", system-ui, -apple-system, sans-serif;
+  --font-bold: "Lato", system-ui, -apple-system, sans-serif;
+}
+
+/* Thème clair */
+[data-theme="light"] {
+  --logo-path: url("/wp-content/themes/revelio/assets/images/logo-white.png");
+  --background-body: #f5f5f5;
+  --background-nav: #121212;
+  --background-block: #a8a8a8;
+  --background-block-light: #f5f5f5;
+  --border-main: #333333;
+  --border-block: #dcdcdc;
+  --color-main: #121212;
+  --color-negative-light: #dcdcdc;
+  --color-negative: #a8a8a8;
+  --color-link-body: #121212;
+  --color-link-negative: #a8a8a8;
+}
+
+/* Reset et base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-body);
+  color: var(--color-main);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.8px;
+  min-height: 100vh;
+}
+
+/* Liens */
+a {
+  text-decoration: none;
+  color: var(--color-link-body);
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:visited {
+  color: var(--color-link-hover);
+}
+
+a:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px 2px #007acc;
+}
+
+/* Typographie de base */
+h1 {
+  font-family: var(--font-name);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Header et Navigation */
+header.global,
+footer {
+  color: var(--color-negative);
+  background-color: var(--background-nav);
+}
+
+header.global {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99996;
+  background: var(--background-nav);
+  opacity: 0.84;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin: auto;
+}
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  width: 40px;
+  height: auto;
+  margin-left: 0.5rem;
+  content: var(--logo-path);
+  transition: filter 0.3s;
+}
+
+/* Menu Burger */
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 100001;
+}
+
+.burger-line {
+  width: 100%;
+  height: 3px;
+  background-color: var(--border-block);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.burger.active .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.burger.active .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Menu Mobile */
+.burger-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--background-nav);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: all 0.5s ease;
+  z-index: 100000;
+}
+
+.burger-menu.active {
+  opacity: 0.95;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.burger-menu-items {
+  list-style: none;
+  text-align: center;
+}
+
+.burger-menu-items li {
+  margin: 2rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.burger-menu.active .burger-menu-items li {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  transition-delay: calc(var(--i) * 0.1s);
+}
+
+/* Desktop Menus - Cachés sur Mobile */
+.desktop-menus {
+  display: none;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-title,
+.cta-title {
+  margin: 3rem auto;
+  font-family: var(--font-name);
+  text-transform: lowercase;
+  font-size: 5rem;
+  letter-spacing: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  animation: fadeIn 2s ease-out;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.line {
+  height: 1px;
+  width: 100px;
+  background: linear-gradient(to right, transparent, #666, transparent);
+}
+
+.skull,
+.skull i,
+.feaver,
+.feaver i {
+  margin: 0 1rem;
+  font-size: 2rem;
+}
+.cta-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  text-align: center;
+  margin-top: 4rem;
+}
+.cta-button,
+.blog-link {
+  /* Base styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+
+  /* Typography */
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  /* Visual styles */
+  background-color: transparent;
+  border: 2px solid var(--border-light);
+  border-radius: 4px;
+  color: var(--color-link-body);
+
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  /* Prevent excess width on desktop */
+  max-width: fit-content;
+}
+.entry-meta, .blog-meta {
+  font-size: 0.9rem; 
+  color: #555;
+}
+/* Desktop optimization */
+@media screen and (min-width: 1024px) {
+  .cta-button,
+  .blog-link {
+    /* Refined padding for desktop */
+    padding: 0.625rem 1.25rem;
+
+    /* Slightly smaller font for better proportions */
+    font-size: 0.8125rem;
+  }
+}
+
+/* Hover state */
+.cta-button:hover,
+.blog-link:hover {
+  background-color: var(--background-nav);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections principales */
+.section-title,
+.entry-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding-top: 4rem;
+  font-style: italic;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-block),
+    transparent
+  );
+  margin: 1rem auto;
+}
+
+.section-subtitle,
+.about-container,
+.contact-container {
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 20px; /* Espacement autour de la liste */
+  width: 100%;
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--color-link-hover);
+  letter-spacing: 0.25rem;
+  text-align: center;
+}
+
+/* Grilles de base pour service, galerie et testimonial */
+.services-grid,
+.testimonials-grid,
+.gallery-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  grid-template-columns: 1fr;
+}
+
+/* Configuration spéciale pour le blog */
+.blog-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  grid-template-columns: 1fr;
+}
+
+/* Cards Mobiles */
+.service-card,
+.testimonial-card,
+.blog-card {
+  background: var(--background-block);
+  border: 1px solid var(--border-block);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.blog-card img {
+  width: 100%;
+}
+
+.card-content {
+  padding: 1rem;
+}
+.testimonials-content, .blog-content{
+  padding: 1rem;
+}
+/* About Section Mobile */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: var(--background-block);
+}
+
+.image-wrapper {
+  width: 100%;
+}
+
+.featured-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.about-container h3.entry-title {
+  font-size: 1.8rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--background-block);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Media Queries Tablette (768px) */
+@media screen and (min-width: 768px) {
+  /* Navigation */
+  .burger {
+    display: none;
+  }
+
+  .desktop-menus {
+    display: flex;
+    gap: 2rem;
+  }
+  ul.social-menu,
+  ul.general-menu,
+  ul.photographer-menu,
+  ul.creative-menu {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .social-menu li,
+  .general-menu li,
+  .photographer-menu li,
+  .creative-menu li {
+    margin: 0 15px;
+  }
+
+  .menu-social-container i.fa-brands {
+    font-size: 30px;
+  }
+
+  .social-menu a,
+  .general-menu a,
+  .photographer-menu a,
+  .creative-menu a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--color-link-negative);
+    transition: color 0.3s ease;
+  }
+
+  .social-menu a:hover,
+  .general-menu a:hover,
+  .photographer-menu a:hover {
+    color: var(--color-link-hover);
+  }
+  /* Grilles */
+  .services-grid,
+  .testimonials-grid,
+  .gallery-grid,
+  .site-footer .container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+    /* Si un seul élément */
+    &:has(> *:only-child) {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Blog reste en une colonne */
+  .blog-grid {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* About Section */
+  .about-container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .about-container p {
+    text-align: left;
+}
+
+  .image-wrapper {
+    
+    flex: 1;
+  }
+}
+/* Media Queries Laptop (1024px) */
+@media screen and (min-width: 1024px) {
+  /* Conteneurs principaux */
+  .hero,
+  .about,
+  .services,
+  .gallery,
+  .testimonials,
+  .blog,
+  .cta,
+  .contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Navigation */
+  nav.navbar {
+    max-width: 1200px;
+    padding: 0 2rem;
+  }
+
+  /* Grilles */
+  .services-grid,
+  .testimonials-grid,
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+
+    /* Si un seul élément */
+    &:has(> *:only-child) {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+    }
+
+    /* Si exactement deux éléments */
+    &:has(> *:nth-child(2):last-child) {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 900px;
+    }
+
+    /* Si exactement trois éléments */
+    &:has(> *:nth-child(3):last-child) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Si plus de trois éléments */
+    &:has(> *:nth-child(4)) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      max-width: 1200px;
+    }
+  }
+
+  /* Blog spécifique */
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+
+    /* Même avec un seul élément, garde l'espace de 3 colonnes */
+    &:has(> *:only-child) > * {
+      grid-column: 1 / 2;
+    }
+
+    /* Si exactement deux éléments */
+    &:has(> *:nth-child(2):last-child) {
+      grid-template-columns: repeat(3, 1fr);
+      & > * {
+        &:first-child {
+          grid-column: 1 / 2;
+        }
+        &:last-child {
+          grid-column: 2 / 3;
+        }
+      }
+    }
+  }
+
+  /* Animations cartes */
+  .service-card:hover,
+  .testimonial-card:hover,
+  .blog-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* ==========================================================================
+   Desktop (1200px) - Configurations avancées
+   ========================================================================== */
+@media screen and (min-width: 1200px) {
+  /* Grilles Services et Témoignages */
+  .services-grid,
+  .testimonials-grid,
+  .gallery-grid {
+    /* Maximum 4 colonnes */
+    &:has(> *:nth-child(4)) {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px;
+    }
+
+    /* Configurations spécifiques maintenues */
+    &:has(> *:only-child) {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+    }
+
+    &:has(> *:nth-child(2):last-child) {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 900px;
+    }
+
+    &:has(> *:nth-child(3):last-child) {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1100px;
+    }
+  }
+
+  /* Configuration blog maintenue */
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+
+    &:has(> *:only-child) > * {
+      grid-column: 1 / 2;
+    }
+  }
+
+  /* Optimisations layout */
+  .container {
+    padding: 0 2rem;
+  }
+
+  .hero-content {
+    max-width: 1000px;
+  }
+
+  .about-container {
+    padding: 1rem;
+    gap: 2rem;
+  }
+}
+
+/* ==========================================================================
+     Animations et transitions
+     ========================================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Applications des animations */
+.hero-content {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.about-content {
+  animation: slideInLeft 1s ease forwards;
+}
+
+.about-image {
+  animation: slideInRight 1s ease forwards;
+}
+
+.card {
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+/* ==========================================================================
+     Optimisations de performance
+     ========================================================================== */
+/* Gestion du scroll */
+.scroll-lock {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Optimisations GPU */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-content,
+  .about-content,
+  .about-image,
+  .card {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+     Classes utilitaires
+     ========================================================================== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-auto {
+  margin: 0 auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* ==========================================================================
+     Support des anciens navigateurs
+     ========================================================================== */
+@supports not (selector(:has(*))) {
+  .services-grid,
+  .testimonials-grid,
+  .gallery-grid,
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 767px) {
+    .services-grid,
+    .testimonials-grid,
+    .gallery-grid,
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+/* ==========================================================================
+     Styles impression
+     ========================================================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  .header,
+  .footer,
+  .burger,
+  .back-to-top,
+  .desktop-menus {
+    display: none !important;
+  }
+
+  .hero,
+  .about,
+  .services,
+  .testimonials,
+  .blog {
+    page-break-inside: avoid;
+  }
+}
+
+/* ==========================================================================
+   Compléments d'animations et de transitions
+   ========================================================================== */
+/* Animation du menu burger */
+.burger-menu-items li {
+  --i: 0; /* Variable pour le délai d'animation, à définir en HTML */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition-delay: calc(var(--i) * 0.1s);
+}
+
+.burger-menu.visible .burger-menu-items li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animations de défilement */
+[data-scroll] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+[data-scroll].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Styles spécifiques des sections
+   ========================================================================== */
+/* Hero Section améliorée */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background-block);
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* About Section améliorée */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.about-cta {
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+/* Contact Section */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border-block);
+  background: var(--background-block-light);
+  color: var(--color-main);
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-link-hover);
+  outline: none;
+}
+
+/* ==========================================================================
+   Améliorations des composants existants
+   ========================================================================== */
+/* Cards améliorées */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--color-link-body),
+    var(--color-link-hover)
+  );
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+  transform: translateX(0);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Navigation améliorée */
+.desktop-menus {
+  position: relative;
+}
+
+.desktop-menus a {
+  position: relative;
+  padding: 0.5rem 1rem;
+}
+
+/* ==========================================================================
+   Optimisations supplémentaires
+   ========================================================================== */
+/* Optimisation des images */
+.image-wrapper picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.image-wrapper img {
+  display: block;
+  width: 370px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Gestion du contenu lazy-loaded */
+.lazy-load {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.lazy-load.is-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Corrections et ajustements responsifs
+   ========================================================================== */
+/* Ajustements tablette paysage */
+@media screen and (min-width: 900px) and (orientation: landscape) {
+  .hero {
+    padding: 6rem 2rem;
+  }
+
+  .about-container {
+    padding: 1rem;
+  }
+}
+
+/* Ajustements grands écrans */
+@media screen and (min-width: 1400px) {
+  html {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1400px;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+  }
+}
+
+/* ==========================================================================
+   Support d'accessibilité amélioré
+   ========================================================================== */
+/* Skip links */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--background-nav);
+  color: var(--color-main);
+  padding: 1rem;
+  z-index: 100002;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Amélioration ARIA */
+[aria-hidden="true"] {
+  display: none;
+}
+
+/* ==========================================================================
+   Support des modes de contraste
+   ========================================================================== */
+@media (prefers-contrast: more) {
+  :root {
+    --color-main: #000000;
+    --background-body: #ffffff;
+    --border-block: #000000;
+  }
+}
+
+/* Configuration des grilles - Mobile First */
+.services-grid,
+.testimonials-grid,
+.gallery-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  grid-template-columns: 1fr; /* Mobile : 1 colonne par défaut */
+}
+
+.blog-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  grid-template-columns: 1fr; /* Mobile : 1 colonne */
+}
+
+/* Tablette Portrait (768px) */
+@media screen and (min-width: 768px) {
+  /* Services, Témoignages, Galerie */
+  .services-grid,
+  .testimonials-grid,
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes par défaut */
+
+    /* Cas particulier : un seul élément */
+    &:has(> *:only-child) {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Blog reste en une colonne sur tablette portrait */
+  .blog-grid {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+/* Laptop/Desktop (1024px) */
+@media screen and (min-width: 1024px) {
+  .services-grid,
+  .testimonials-grid,
+  .gallery-grid {
+    gap: 2.5rem;
+
+    /* Configuration par défaut : 3 colonnes */
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Cas 1 : Un seul élément */
+    &:has(> *:only-child) {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+    }
+
+    /* Cas 2 : Exactement deux éléments */
+    &:has(> *:nth-child(2):last-child) {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 900px;
+    }
+
+    /* Cas 3 : Exactement trois éléments */
+    &:has(> *:nth-child(3):last-child) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Cas 4 : Plus de trois éléments */
+    &:has(> *:nth-child(4)) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  /* Configuration spéciale blog */
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+
+    /* Un seul élément : reste à gauche dans l'espace de 3 colonnes */
+    &:has(> *:only-child) > * {
+      grid-column: 1 / 2;
+    }
+
+    /* Deux éléments : utilisent les deux premières colonnes de l'espace de 3 */
+    &:has(> *:nth-child(2):last-child) > * {
+      &:first-child {
+        grid-column: 1 / 2;
+      }
+      &:last-child {
+        grid-column: 2 / 3;
+      }
+    }
+  }
+}
+
+/* Grand écran (1200px) */
+@media screen and (min-width: 1200px) {
+  .services-grid,
+  .testimonials-grid,
+  .gallery-grid {
+    /* Maximum 4 colonnes si beaucoup d'éléments */
+    &:has(> *:nth-child(4)) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Maintien des autres configurations */
+    &:has(> *:only-child) {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+    }
+
+    &:has(> *:nth-child(2):last-child) {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 900px;
+    }
+
+    &:has(> *:nth-child(3):last-child) {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1100px;
+    }
+  }
+
+  /* Blog maintient sa configuration 3 colonnes */
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+  }
+}
+
+/* Footer Base Styles */
+.site-footer {
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.site-footer .container {
+  display: grid;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer About Section */
+.footer-about {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.footer-about h2 {
+  font-family: var(--font-name);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-about h3 {
+  font-family: var(--font-italic);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer Navigation */
+nav.footer-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav.footer-menu > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Ensure both ULs are treated the same way */
+nav.footer-menu > ul.menu__footer,
+nav.footer-menu > ul#menu-footer-general {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__footer li {
+  margin: 0;
+}
+
+.menu__footer a {
+  color: var(--color-link-negative);
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.menu__footer a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Back to Top Button */
+.back-to-top {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.back-to-top a {
+  color: var(--color-link-body);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Copyright Text */
+.site-footer p {
+  text-align: left;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.site-footer .container > p:last-of-type {
+  grid-column: span 2; /* Occupe toute la largeur (deux colonnes) */
+  text-align: center;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+  nav.footer-menu {
+    flex-direction: row;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  nav.footer-menu > ul,
+  nav.footer-menu > ul.menu__footer,
+  nav.footer-menu > ul#menu-footer-general {
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    margin: 0;
+  }
+
+  nav.footer-menu ul li {
+    margin: 0 1rem;
+  }
+}
